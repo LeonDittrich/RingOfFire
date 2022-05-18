@@ -1,7 +1,8 @@
 <div class="field">
     <div class="card-stack">
         <img [ngStyle]="{'right.px': i * 5}" 
-            *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" src="/assets/img/cards/card_cover.png">  <!-- *ngFor ist eine For Schleife, mit let c(eine Variable) sagen wir was wir durchetarieren. dann kommt das Array mit der Anzahl an Karten die wir brauchen.
+            *ngFor="let c of [0, 1, 2, 3]; let i = index;" src="/assets/img/cards/card_cover.png">  <!-- *ngFor ist eine For Schleife, mit let c(eine Variable) sagen wir was wir durchetarieren. dann kommt das Array mit der Anzahl an Karten die wir brauchen.
                 Mit ngStyle fügen wir dem Element direct einen style zu. Hier ein abstand nach rechts von 0px beim ersten Element 5px beim 2ten, beim 3ten 10px usw, den px abstand gibt i an und mit *5 sagen wir das wir 1px mit 5 Multiplizieren -->
+        <img (click)="takeCard()" [class.pick-card]="pickCardAnimation" class="top-card" style="right: 30px" src="/assets/img/cards/card_cover.png">  <!-- class.pick-card ist dier classe die angezeigt wird wenn die Varibale pickCardAnimation(in TS definiert) true ist -->
     </div>
 </div>

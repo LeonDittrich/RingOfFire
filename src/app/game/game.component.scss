@@ -15,3 +15,17 @@
         width: 120px;
     }
 }
+
+.top-card {
+    cursor: pointer;
+    transition: all 125ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.1) translateY(-30px);  // beim Hovern ändern wir die Größe(scale) auf 1.1 fache und schieben es auf der Y Achse(translateY) nach oben
+    }
+}
+
+.pick-card {
+    transition: all 125ms ease-in-out;
+    transform: scale(1.5) !important;
+}
