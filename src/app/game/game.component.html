@@ -7,6 +7,6 @@
          src="/assets/img/cards/card_cover.png"> 
 
         <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card" style="right: 30px" 
-         src="/assets/img/cards/spade_1.png">
+         src="/assets/img/cards/{{ currentCard }}.png">  <!-- mit {{ currentCard }} fügen wir die Aktuelle Karte ein die per zufall gewählt wird. CurrentCard  kommt aus game.component.ts -->
     </div>
 </div>
