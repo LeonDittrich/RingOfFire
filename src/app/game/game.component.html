@@ -1,12 +1,17 @@
 <div class="field">
     <div class="card-stack">
+        <!-- Card stack -->
         <img [ngStyle]="{'right.px': i * 5}" 
             *ngFor="let c of [0, 1, 2, 3]; let i = index;" src="/assets/img/cards/card_cover.png">  <!-- *ngFor ist eine For Schleife, mit let c(eine Variable) sagen wir was wir durchetarieren. dann kommt das Array mit der Anzahl an Karten die wir brauchen.
                 Mit ngStyle fügen wir dem Element direct einen style zu. Hier ein abstand nach rechts von 0px beim ersten Element 5px beim 2ten, beim 3ten 10px usw, den px abstand gibt i an und mit *5 sagen wir das wir 1px mit 5 Multiplizieren -->
         <img (click)="takeCard()" class="top-card" style="right: 30px"
-         src="/assets/img/cards/card_cover.png"> 
+        src="/assets/img/cards/card_cover.png"> 
 
+        <!-- Stack for played cards -->
+        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card }}.png">  <!-- card ist die Variable und ist game.playedCards aus game.component.ts  -->
+ 
+        <!-- Current crad (Animation) -->
         <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card" style="right: 30px" 
-         src="/assets/img/cards/{{ currentCard }}.png">  <!-- mit {{ currentCard }} fügen wir die Aktuelle Karte ein die per zufall gewählt wird. CurrentCard  kommt aus game.component.ts -->
+         src="/assets/img/cards/{{ currentCard }}.png">  <!-- mit {{ currentCard }} fügen wir die Aktuelle Karte ein die per zufall gewählt wird. CurrentCard  kommt aus game.component.ts   Man malt von Unten nach oben, dh. das Letzte Bild ist oben!!-->
     </div>
 </div>

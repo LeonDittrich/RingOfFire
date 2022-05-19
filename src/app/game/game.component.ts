@@ -27,12 +27,14 @@ export class GameComponent implements OnInit {
   takeCard() {
     if (!this.pickCardAnimation) {  // wird nur ausgeführt wenn pickCardAnimation false ist(! ist false)
       this.currentCard = this.game.stack.pop();  // das pop gibt uns den Letzten Wert des Array zurück und wird entfernt aus dem Array
-    console.log(this.currentCard);
-    this.pickCardAnimation = true;
+      this.pickCardAnimation = true;
+      console.log('New Card:' + this.currentCard);
+      console.log('Game is', this.game);
 
     setTimeout(() => {
+      this.game.playedCards.push(this.currentCard);
       this.pickCardAnimation = false;
-    }, 1500);  // durch den Timeout können wir nur alle 1,5 sec eine neue Karte ziehen
+    }, 1000);  // durch den Timeout können wir nur aller 1 sec eine neue Karte ziehen
     }
   }
 
