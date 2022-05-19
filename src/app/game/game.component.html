@@ -1,4 +1,7 @@
-<app-player style="top: 130px" class="player-position"></app-player>
+<app-player *ngFor="let player of game.players; let i = index;"
+[ngStyle]="{'top.px': 100 + (i * 120)}" [name]="player"  
+class="player-position"></app-player>  <!-- ngFor wiederholt das so oft wir Spieler im Array haben. Top gibt an was wir stylen und die px die Einheit, die 100 ist die erste zahl, aber i->0 0*120=0 beim 2ten durchlauf i->1 1*120=120  -->
+<!-- Inputvariable ->[name]="player" der Name soll der player sein, aus dem  Array, name wird in player.components,ts importiert und in player.component.html eingefügt  -->
 
 <div class="field">
     <div class="card-stack">
