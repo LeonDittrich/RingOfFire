@@ -49,7 +49,9 @@ export class GameComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      this.game.players.push(name);  // Hier fügen wir den namen den wir eingegeben haben im Dialogfeld in das Array game.players ein
+      if(name && name.length > 0) {  // Zuerst schaueb wir ob die Variable name existiert, wenn ja überprüfen wir ob die Buchstabenlänge von name größer als 0 ist, dann fügt es den Spieler ein
+        this.game.players.push(name);  // Hier fügen wir den namen den wir eingegeben haben im Dialogfeld in das Array game.players ein
+      }
     });
   }
 

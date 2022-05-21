@@ -1,4 +1,4 @@
 <mat-card>
-    <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-content>{{ description }}</mat-card-content>
+    <mat-card-title>{{ card ? title : 'Please pick a card' }}</mat-card-title>  <!-- ist eine If Else abfrage, if card existiert dann title einfügen, ansonsten den Text zwischen '' -->
+    <mat-card-content>{{ card ? description : 'Plese click on the card stack to select the next card.' }}</mat-card-content>
 </mat-card>
