@@ -1,4 +1,4 @@
-<div class="player">
+<div class="player" [class.player-active]="playerActive">  <!-- Wir wollen die Klasse player-active nur haben wenn playerActive(ingame.component.html) true ist -->
     <img src="/assets/img/profile/men.png">
     <span>{{ name }}</span>  <!-- name wurde importiert aus player.component.ts und wurde in game.component.html als INputvariable eingebunden -->
 </div>

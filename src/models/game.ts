@@ -1,8 +1,8 @@
 export class Game {
-    public players: string[] = ['Günther', 'Olaf'];  // public das man von überall darauf zugreifen kann
+    public players: string[] = [];  // public das man von überall darauf zugreifen kann
     public stack: string[] = [];  // mit string [] sagen wir das es ein Array nur mit Buchstaben(strings) ist, keine Zhalen oder Booleans
     public playedCards: string[] = [];
-    public currentPLayer: number = 0;  // hier sagen wir das es nur Zahlen sind
+    public currentPlayer: number = 0;  // hier sagen wir das es nur Zahlen sind
 
 
     constructor() {  // wird IMMER am ANFANG aufgerufen
