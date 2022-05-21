@@ -33,6 +33,8 @@ export class GameComponent implements OnInit {
       console.log('New Card:' + this.currentCard);
       console.log('Game is', this.game);
 
+      this.game.currentPlayer++;  // Erhöht nach dem Karteziehen die Currentplay Zahl, damit wir den Spieler wechseln
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;  // Hier verwenden wir Modulo somit kann die Zahl nicht Größer sein als die Zahl im  Arry und wir starten wieder bei 0
     setTimeout(() => {
       this.game.playedCards.push(this.currentCard);
       this.pickCardAnimation = false;
