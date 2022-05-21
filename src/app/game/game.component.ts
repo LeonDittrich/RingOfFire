@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 
 @Component({
   selector: 'app-game',
@@ -11,7 +13,7 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   game: Game;  // Variable heist game vom Typ Game(game.ts)
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
@@ -36,6 +38,17 @@ export class GameComponent implements OnInit {
       this.pickCardAnimation = false;
     }, 1000);  // durch den Timeout können wir nur aller 1 sec eine neue Karte ziehen
     }
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent, {
+
+    });
+
+    dialogRef.afterClosed().subscribe((name: string) => {
+      this.game.players.push(name);  // Hier fügen wir den namen den wir eingegeben haben im Dialogfeld in das Array game.players ein
+    });
   }
 
 }
