@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ringoffireld": {
+      "hosting": {
+        "ringoffire": [
+          "ringoffireld"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ringoffireld"
+  }
+}

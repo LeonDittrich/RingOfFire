@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore/firebase';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -12,11 +14,15 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   currentCard: string = '';
   game: Game;  // Variable heist game vom Typ Game(game.ts)
+  games$: Observable<any>;
+  todos: Array<any>;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private firestore: Firestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
+    const coll = collection(this.firestore, 'games');
+    this.games$ = collectionData(coll); 
   }
 
 
