@@ -15,6 +15,15 @@ export class Game {
 
         shuffle(this.stack);
     }
+
+    public toJson() {
+        return {  // wnadeln es hier in ein JSON um
+            players: this.players,  // nennen das Feld players und den Wert nehmen wir aus dem Array oben und fügen es hier ein
+            stack: this.stack,
+            playedCards: this.playedCards,
+            currentPlayer: this.currentPlayer
+        };
+    }
 }
 
 

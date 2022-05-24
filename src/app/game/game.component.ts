@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore/firebase';
+import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,12 +23,20 @@ export class GameComponent implements OnInit {
     this.newGame();
     const coll = collection(this.firestore, 'games');
     this.games$ = collectionData(coll); 
+
+    this.games$.subscribe( (game) => {  // damit Abonieren wir udas Array games$ und sobalt sich was verändert darin führt es die Funktion aus. In dem Fall console log um uns zu Informieren
+      console.log('Game update', game);
+    });
   }
 
 
   newGame() {
     this.game = new Game();  // hier wird ein leeres JSON Array erstellt wo alle Eigenschaften aus Game.ts drin sind
     console.log(this.game);
+    const coll = collection(this.firestore, 'games');  // Hier greifen wir wieder auf die Collection games zu die auf Firebase ist
+    setDoc(doc(coll), {name: 'Hallo Welt'});  // Hier sagen wir das wir der Collection(Array) games was hinzufügen wollen, und zwar das Feld name mit dem Wert HAllo Welt
+
+    // setDoc(doc(coll), {this.game.toJson()});   wirft fehler
   }
 
 
