@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -17,26 +18,34 @@ export class GameComponent implements OnInit {
   games$: Observable<any>;
   todos: Array<any>;
 
-  constructor(private firestore: Firestore, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private firestore: Firestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
-    const coll = collection(this.firestore, 'games');
-    this.games$ = collectionData(coll); 
+    this.route.params.subscribe((params) => {  // hier aboniere ich die URL Parameter
+      console.log('die Parameter',params['id']);
 
-    this.games$.subscribe( (game) => {  // damit Abonieren wir udas Array games$ und sobalt sich was verändert darin führt es die Funktion aus. In dem Fall console log um uns zu Informieren
-      console.log('Game update', game);
+
+      const coll = collection(this.firestore, 'games',`${params}`);
+      this.games$ = collectionData(coll); 
+  
+      this.games$.subscribe( (game) => {  // damit Abonieren wir udas Array games$ und sobalt sich was verändert darin führt es die Funktion aus. In dem Fall console log um uns zu Informieren
+      //   console.log('Game update', game);
+      });
+
+      //this.route.params(['/id'], {queryParams: {games: 'C3nlDSSApjfYlyKyKjtD'} });
     });
+  
   }
 
 
   newGame() {
     this.game = new Game();  // hier wird ein leeres JSON Array erstellt wo alle Eigenschaften aus Game.ts drin sind
-    console.log(this.game);
+    console.log('Alle game.ts Arrays', this.game);
     const coll = collection(this.firestore, 'games');  // Hier greifen wir wieder auf die Collection games zu die auf Firebase ist
     setDoc(doc(coll), {name: 'Hallo Welt'});  // Hier sagen wir das wir der Collection(Array) games was hinzufügen wollen, und zwar das Feld name mit dem Wert HAllo Welt
 
-    // setDoc(doc(coll), {this.game.toJson()});   wirft fehler
+    setDoc(doc(coll), {newGame:this.game.toJson()});
   }
 
 

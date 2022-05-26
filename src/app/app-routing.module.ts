@@ -5,7 +5,7 @@ import { StartscreenComponent } from './startscreen/startscreen.component';
 
 const routes: Routes = [
   { path: '', component: StartscreenComponent },
-  { path: 'game', component: GameComponent },
+  { path: 'game/:id', component: GameComponent },  // mit : sagen wir das die Route über eine Variable verfügt, in dem Fall die Variable id
 ];
 
 @NgModule({
