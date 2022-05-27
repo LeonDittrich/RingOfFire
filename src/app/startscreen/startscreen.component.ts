@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class StartscreenComponent implements OnInit {
 
-  constructor(private router: Router) { }  // private deswegen weil wir den router nur hier in der KOmponente verwenden(überall wäre dann Public)
+  constructor(private router: Router) { }  // private deswegen weil wir den router nur hier in der Komponente verwenden(überall wäre dann Public)
 
   ngOnInit(): void {
   }
@@ -16,6 +16,7 @@ export class StartscreenComponent implements OnInit {
 
   newGame() {
     //Start Game
-    this.router.navigateByUrl('/game')
+    let newGameID = "";
+    this.router.navigateByUrl('/game/' + newGameID)
   }
 }
