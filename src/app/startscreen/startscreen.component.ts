@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore, collection, setDoc, doc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Game } from 'src/models/game';
 
 @Component({
   selector: 'app-startscreen',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class StartscreenComponent implements OnInit {
 
-  constructor(private router: Router) { }  // private deswegen weil wir den router nur hier in der Komponente verwenden(überall wäre dann Public)
+  constructor(private firestore: Firestore, private router: Router) { }  // private deswegen weil wir den router nur hier in der Komponente verwenden(überall wäre dann Public)
 
   ngOnInit(): void {
   }
@@ -16,7 +18,17 @@ export class StartscreenComponent implements OnInit {
 
   newGame() {
     //Start Game
-    let newGameID = "";
-    this.router.navigateByUrl('/game/' + newGameID)
+
+    let game = new Game();
+
+    console.log('Alle game.ts Arrays', game);
+    const coll = collection(this.firestore, 'games');  // Hier greifen wir wieder auf die Collection games zu die auf Firebase ist
+
+    setDoc(doc(coll), {newGame: game.toJson()}).then((gameInfo: any) => {
+      console.log('Infos zum spiel', gameInfo);
+      this.router.navigateByUrl('/game/' + gameInfo['id']);
+    });
+
+    //let gameID = "";
   }
 }
