@@ -3,6 +3,8 @@ export class Game {
     public stack: string[] = [];  // mit string [] sagen wir das es ein Array nur mit Buchstaben(strings) ist, keine Zhalen oder Booleans
     public playedCards: string[] = [];
     public currentPlayer: number = 0;  // hier sagen wir das es nur Zahlen sind
+    public pickCardAnimation = false;
+    public currentCard: string = '';
 
 
     constructor() {  // wird IMMER am ANFANG aufgerufen
@@ -21,7 +23,9 @@ export class Game {
             players: this.players,  // nennen das Feld players und den Wert nehmen wir aus dem Array oben und fügen es hier ein
             stack: this.stack,
             playedCards: this.playedCards,
-            currentPlayer: this.currentPlayer
+            currentPlayer: this.currentPlayer,
+            pickCardAnimation: this.pickCardAnimation,
+            currentCard: this.currentCard
         };
     }
 }
