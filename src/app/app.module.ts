@@ -20,6 +20,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore'; 
 import { AngularFireModule } from '@angular/fire/compat';
+import { PleaseAddNewPlayerComponent } from './please-add-new-player/please-add-new-player.component';
 
 
 
@@ -30,7 +31,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    GameDescriptionComponent
+    GameDescriptionComponent,
+    PleaseAddNewPlayerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -5,6 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PleaseAddNewPlayerComponent } from '../please-add-new-player/please-add-new-player.component';
 
 @Component({
   selector: 'app-game',
@@ -53,7 +54,7 @@ export class GameComponent implements OnInit {
 
 
   takeCard() {
-    if (!this.game.pickCardAnimation) {  // wird nur ausgeführt wenn pickCardAnimation false ist(! ist false)
+    if (!this.game.pickCardAnimation && this.game.players.length > 1) {  // wird nur ausgeführt wenn pickCardAnimation false ist(! ist false)
       this.game.currentCard = this.game.stack.pop();  // das pop gibt uns den Letzten Wert des Array zurück und wird entfernt aus dem Array
       this.game.pickCardAnimation = true;
       console.log('New Card:' + this.game.currentCard);
@@ -63,11 +64,13 @@ export class GameComponent implements OnInit {
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;  // Hier verwenden wir Modulo somit kann die Zahl nicht Größer sein als die Zahl im  Arry und wir starten wieder bei 0
 
       this.saveGame();  // Speichern die Gezogene Karte und den Spieler der dran ist ab
-    setTimeout(() => {
-      this.game.playedCards.push(this.game.currentCard);
-      this.game.pickCardAnimation = false;
-      this.saveGame();  // Zeigt die Karte wieder an
-    }, 1000);  // durch den Timeout können wir nur aller 1 sec eine neue Karte ziehen
+      setTimeout(() => {
+        this.game.playedCards.push(this.game.currentCard);
+        this.game.pickCardAnimation = false;
+        this.saveGame();  // Zeigt die Karte wieder an
+      }, 1000);  // durch den Timeout können wir nur aller 1 sec eine neue Karte ziehen
+    }else if(this.game.players.length < 2) {
+      this.openPleaseAddNewPlayerDialog()
     }
   }
 
@@ -94,4 +97,8 @@ export class GameComponent implements OnInit {
       .update(this.game.toJson()); 
   }
 
+
+  openPleaseAddNewPlayerDialog() {
+    this.dialog.open(PleaseAddNewPlayerComponent);
+  }
 }
