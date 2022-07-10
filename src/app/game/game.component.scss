@@ -81,11 +81,25 @@
 
 @media (max-width: 800px) {
     
+    .field {
+        align-items: baseline;
+        overflow-y: hidden;
+    }
+
     .game-description {
         right: 0px;
     }
 
     .player-position {
         top: 140px;
+    }
+
+    .card-stack {
+        top: 78%;
+        left: 40%;
+
+        img {
+            width: 80px;
+        }
     }
 }
