@@ -21,6 +21,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore'; 
 import { AngularFireModule } from '@angular/fire/compat';
 import { PleaseAddNewPlayerComponent } from './please-add-new-player/please-add-new-player.component';
+import { PlayerMobileComponent } from './player-mobile/player-mobile.component';
 
 
 
@@ -32,7 +33,8 @@ import { PleaseAddNewPlayerComponent } from './please-add-new-player/please-add-
     PlayerComponent,
     DialogAddPlayerComponent,
     GameDescriptionComponent,
-    PleaseAddNewPlayerComponent
+    PleaseAddNewPlayerComponent,
+    PlayerMobileComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

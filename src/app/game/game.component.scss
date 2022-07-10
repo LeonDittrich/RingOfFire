@@ -4,13 +4,15 @@
     max-width: 100%;
     background-image: url('/assets/img/background.jpg');
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
-    background-repeat: round;
+    //background-repeat: round;
+    background-size: cover;
 }
 
 .card-stack {
     position: relative;
+    left: 35%;
     img {
         position: absolute;
         width: 120px;
@@ -51,7 +53,6 @@
     }
 }
 
-
 .player-position {
     position: absolute;
     right: 0;
@@ -65,8 +66,26 @@
 }
 
 .game-description {
-position: absolute;
-bottom: 32px;
-left: 150px;
-right: 150px;
+    position: absolute;
+    //bottom: 32px;
+    left: 0;  //150px
+    right: 350px;  // 150px
+    top: 0;
+}
+
+
+
+
+/* -----------------Optimierung für Mobile Endgeräte----------------- */
+
+
+@media (max-width: 800px) {
+    
+    .game-description {
+        right: 0px;
+    }
+
+    .player-position {
+        top: 140px;
+    }
 }

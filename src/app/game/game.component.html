@@ -1,8 +1,14 @@
 <app-player *ngFor="let player of game.players; let i = index;"
-[ngStyle]="{'top.px': 100 + (i * 90)}" [playerActive]="i == game.currentPlayer"
+[ngStyle]="{'top.px': 48 + (i * 90)}" [playerActive]="i == game.currentPlayer"
  [name]="player"  
-class="player-position"></app-player>  <!-- ngFor wiederholt das so oft wir Spieler im Array haben. Top gibt an was wir stylen und die px die Einheit, die 100 ist die erste zahl, aber i->0 0*90=0 beim 2ten durchlauf i->1 1*90=90  -->
+class="player-position hide"></app-player>  <!-- ngFor wiederholt das so oft wir Spieler im Array haben. Top gibt an was wir stylen und die px die Einheit, die 100 ist die erste zahl, aber i->0 0*90=0 beim 2ten durchlauf i->1 1*90=90  -->
 <!-- Inputvariable ->[name]="player" der Name soll der player sein, aus dem  Array, name wird in player.components,ts importiert und in player.component.html eingefügt. Wenn i ==game.currentPLayer ist dann kommt der Wert true  -->
+
+<app-player-mobile *ngFor="let player of game.players; let i = index;"
+[ngStyle]="{'top.px': 140 + (i * 50)}" [playerActive]="i == game.currentPlayer"
+ [name]="player"  
+class="player-position hide-mobile"></app-player-mobile>
+
 
 <div class="field">
     <div class="card-stack">
