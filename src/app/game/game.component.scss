@@ -61,8 +61,13 @@
 
 .btn-add {
     position: absolute;
-    right: 32px;
-    bottom: 32px;
+    right: 155px;
+    bottom: 130px;
+}
+
+.mat-fab {
+    width: 80px;
+    height: 80px;
 }
 
 .game-description {
@@ -92,6 +97,16 @@
 
     .player-position {
         top: 140px;
+    }
+
+    .btn-add {
+        right: 80px;
+        bottom: 61px;
+    }
+
+    .mat-fab {
+        width: 70px;
+        height: 70px;
     }
 
     .card-stack {
